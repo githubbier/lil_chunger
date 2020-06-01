@@ -15,7 +15,7 @@ var channel_name = "";
 var user_id_and_msg = [];
 const config = require('./config.json');
 const { prefix, token } = require('./config.json');
-const bot = new Eris(process.env.DISCORD_BOT_TOKEN);   // Replace DISCORD_BOT_TOKEN in .env with your bot accounts token
+//const bot = new Eris(process.env.DISCORD_BOT_TOKEN);   // Replace DISCORD_BOT_TOKEN in .env with your bot accounts token
 client.login(token);
 var freeToChat = 1;
 
@@ -23,7 +23,7 @@ var fs = require('fs'),
     path = require('path'),    
     quote_filePath = path.join(__dirname, 'res/hyperion_quotes.txt');
     joke_filePath  = path.join(__dirname, "res/jokes.txt");
-    lbc_filePath = path.join(__dirname, "res/lbcMay21.txt");
+    lbc_filePath = path.join(__dirname, "res/lbc_may_31.txt");
 
 // returns discord user id
 function yoinkID(username) {
