@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const Eris = require('eris');
@@ -15,8 +16,9 @@ var channel_name = "";
 var user_id_and_msg = [];
 const config = require('./config.json');
 const { prefix, token } = require('./config.json');
+const pre = process.env.prefix;
 //const bot = new Eris(process.env.DISCORD_BOT_TOKEN);   // Replace DISCORD_BOT_TOKEN in .env with your bot accounts token
-client.login(token);
+client.login(process.env.CLIENT_TOKEN);
 var freeToChat = 1;
 
 var fs = require('fs'),
@@ -281,7 +283,7 @@ client.on('message', msg => {
   
   if (msg.content.toLowerCase() === 'ping') {
     msg.reply('pong bruh up to 0 good')
-  } else if (msg.content.toLowerCase().startsWith('~q') || msg.content.toLowerCase().startsWith("~quote")) {
+  } else if (msg.content.toLowerCase().startsWith(pre + 'q') || msg.content.toLowerCase().startsWith(pre + "quote")) {
     if (msg.content.includes("@")) {
       let supplied_user = msg.content.split('@')[1];
       let cleanedUser = supplied_user.substr(1).replace(">", "");
@@ -296,17 +298,17 @@ client.on('message', msg => {
     setTimeout(freeUp, 5000); // Hello, John
     } else 
     {
-      msg.reply("NOR!! do `~q @<name>`");
+      msg.reply("NOR!! do `" + pre + "q @<name>`");
     }
   } 
   
-  else if (msg.content.toLowerCase() === '~hype') {
+  else if (msg.content.toLowerCase() === pre + 'hype') {
     hyperionQuote = quotes[Math.floor(Math.random()*quotes.length)];
     msg.reply(hyperionQuote);
-  } else if (msg.content.toLowerCase() === "~heh") {
+  } else if (msg.content.toLowerCase() === pre + "heh") {
     funny_joke = jokes[Math.floor(Math.random()*jokes.length)];
     msg.reply(funny_joke);
-  } else if (msg.content.toLowerCase().startsWith("~redd") || msg.content.toLowerCase().startsWith("~r")) {
+  } else if (msg.content.toLowerCase().startsWith(pre + "redd") || msg.content.toLowerCase().startsWith(pre + "r")) {
     if (!msg.content.includes(" ")) {
       msg.reply("forgetting something  ??");
       return 0;
@@ -318,7 +320,7 @@ client.on('message', msg => {
 
 
   } 
-  else if (msg.content.toLowerCase().startsWith("~again") || msg.content.toLowerCase().startsWith("~a")) {
+  else if (msg.content.toLowerCase().startsWith(pre + "again") || msg.content.toLowerCase().startsWith(pre + "a")) {
     let distance = 0;
     if (msg.content.includes(" ")) { 
       distance = msg.content.split(' ')[1];
